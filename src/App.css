@@ -1,0 +1,21 @@
+@import "tailwindcss";
+@import 'animate.css';
+
+.cabecera-color{
+    background-color: #0086A7 !important;
+}
+.cuerpo-color{
+    background-color: #0086A7 !important;
+}
+
+.fondo-white{
+    background: white;
+}
+
+.fondito{
+    background-color: #0086A7 !important;
+}
+
+.txt-min{
+    font-size: 0.7rem;
+}
