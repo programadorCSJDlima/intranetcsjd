@@ -136,9 +136,7 @@ function App() {
                 <CardView img={asset("images/archivos.png")} link="/" />
                 <CardView img={asset("images/directorio.png")} link="/" />
               </div>
-              <CardView img={asset("images/politica-privacidad.png")} title="Politica Privacidad" link="https://clinicalima.sanjuandedios.pe/informacion-al-usuario/libro-de-reclamaciones-en-linea/" />
-            </div>
-          </div>
+             
 
           {/* Columna 4 (lg:col-span-4, más grande) */}
           <div className="lg:col-span-4">
