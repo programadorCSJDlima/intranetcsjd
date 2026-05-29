@@ -4,6 +4,7 @@ import CardView from './components/Card';
 import ModalViewMenu from './components/ModalMenu';
 import ModalViewCumpleanios from './components/ModalCumpleanios';
 import MarketingPageV2 from './components/MarketingPageV2';
+import ModalView from './components/Modal';
 
 export default function AppRoot2() {
   const currentYear = new Date().getFullYear();
@@ -13,6 +14,8 @@ export default function AppRoot2() {
   });
   const [onEat, setOnEat] = useState(false);
   const [onBirthay, setOnBirthday] = useState(false);
+  const [imageExists, setImageExists] = useState(true);
+  const [modalOpen, setModalOpen] = useState(true);
   const [pathname, setPathname] = useState(window.location.pathname);
 
   const base = import.meta.env.BASE_URL;
@@ -182,7 +185,7 @@ export default function AppRoot2() {
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <CardView img={asset('images/chequeo.png')} title="Chequeo Medico" link="https://api.whatsapp.com/send?phone=51944576001&text=%C2%A1Hola%2C%20Cl%C3%ADnica%20San%20Juan%20de%20Dios%20Lima!%20Deseo%20informaci%C3%B3n%20sobre%20sus%20servicios%20y%20especialidades%2C%20por%20favor%20%3C3" />
-                <CardView img={asset('images/seguridad-salud.png')} title="Seguridad en el trabajo CSJD" link="https://www.oracle.com/database/technologies/appdev/ocmt.html" />
+                <CardView img={asset('images/seguridad-salud.png')} title="Seguridad en el trabajo CSJD" link="/" />
               </div>
               <div className="grid grid-cols-2 gap-4">
               <CardView img={asset('images/politica-privacidad.png')} title="Politica Privacidad" link="https://clinicalima.sanjuandedios.pe/informacion-al-usuario/libro-de-reclamaciones-en-linea/" />
@@ -203,12 +206,34 @@ export default function AppRoot2() {
         link={popupConfigs.cumpleanios.modalLink}
       />
 
+      {/* Solo mostrar el modal si `imageExists` es `true` */}
+      {imageExists && (
+       <ModalView
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+        slides={[
+          {
+            img: popupConfigs.cumpleanios.modalImage,
+            link: popupConfigs.cumpleanios.modalLink,
+            title: 'Cumpleaños',
+          },
+          {
+            img: popupConfigs.menu.modalImage,
+            link: popupConfigs.menu.modalLink,
+            title: 'Menu semanal',
+          },
+        ]}
+      />
+      )}
+
+
       <ModalViewMenu
         isOpen={onBirthay}
         onClose={() => setOnBirthday(false)}
         img={popupConfigs.menu.modalImage}
         link={popupConfigs.menu.modalLink}
       />
+
     </div>
   );
 }
